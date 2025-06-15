@@ -4,18 +4,18 @@
     <bpmn:extensionElements>
       <zeebe:versionTag value="1.0" />
     </bpmn:extensionElements>
-    <bpmn:subProcess id="Activity_0gqmvmp" name="sales agent">
+    <bpmn:subProcess id="Activity_0gqmvmp" name="Sales Agent">
       <bpmn:incoming>Flow_1v9xye9</bpmn:incoming>
       <bpmn:outgoing>Flow_1unxral</bpmn:outgoing>
-      <bpmn:adHocSubProcess id="agent-ad-hoc-subprocess" name="sales agent tools">
+      <bpmn:adHocSubProcess id="agent-ad-hoc-subprocess" name="sales agent tools" cancelRemainingInstances="false">
         <bpmn:extensionElements>
-          <zeebe:adHoc activeElementsCollection="=[toolCall._meta.name]" />
+          <zeebe:adHoc />
         </bpmn:extensionElements>
         <bpmn:incoming>Flow_0j3m5zu</bpmn:incoming>
         <bpmn:outgoing>Flow_0n6xzfd</bpmn:outgoing>
         <bpmn:multiInstanceLoopCharacteristics>
           <bpmn:extensionElements>
-            <zeebe:loopCharacteristics inputCollection="=agent.toolCalls" inputElement="toolCall" outputCollection="toolCallResults" outputElement="={&#10;  id: toolCall._meta.id,&#10;  name: toolCall._meta.name,&#10;  content: toolCallResult&#10;}" />
+            <zeebe:loopCharacteristics inputElement="" outputCollection="" />
           </bpmn:extensionElements>
         </bpmn:multiInstanceLoopCharacteristics>
         <bpmn:scriptTask id="calculate-payment-amount" name="calculate payment amount">
@@ -119,10 +119,10 @@
           </bpmn:extensionElements>
         </bpmn:serviceTask>
       </bpmn:adHocSubProcess>
-      <bpmn:endEvent id="Event_09qx84h">
+      <bpmn:endEvent id="Event_09qx84h" name="Sales agent done">
         <bpmn:incoming>Flow_0h239g7</bpmn:incoming>
       </bpmn:endEvent>
-      <bpmn:startEvent id="Event_0haygdl">
+      <bpmn:startEvent id="Event_0haygdl" name="Start Sales agent">
         <bpmn:outgoing>Flow_0w8cb94</bpmn:outgoing>
       </bpmn:startEvent>
       <bpmn:serviceTask id="Activity_19m982f" name="Find next best step" zeebe:modelerTemplate="io.camunda.connectors.agenticai.aiagent.v1" zeebe:modelerTemplateVersion="1" zeebe:modelerTemplateIcon="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iMTYiIGZpbGw9IiNBNTZFRkYiLz4KPG1hc2sgaWQ9InBhdGgtMi1vdXRzaWRlLTFfMTg1XzYiIG1hc2tVbml0cz0idXNlclNwYWNlT25Vc2UiIHg9IjQiIHk9IjQiIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgZmlsbD0iYmxhY2siPgo8cmVjdCBmaWxsPSJ3aGl0ZSIgeD0iNCIgeT0iNCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0Ii8+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMjAuMDEwNSAxMi4wOTg3QzE4LjQ5IDEwLjU4OTQgMTcuMTU5NCA4LjEwODE0IDE2LjE3OTkgNi4wMTEwM0MxNi4xNTIgNi4wMDQ1MSAxNi4xMTc2IDYgMTYuMDc5NCA2QzE2LjA0MTEgNiAxNi4wMDY2IDYuMDA0NTEgMTUuOTc4OCA2LjAxMTA0QzE0Ljk5OTQgOC4xMDgxNCAxMy42Njk3IDEwLjU4ODkgMTIuMTQ4MSAxMi4wOTgxQzEwLjYyNjkgMTMuNjA3MSA4LjEyNTY4IDE0LjkyNjQgNi4wMTE1NyAxNS44OTgxQzYuMDA0NzQgMTUuOTI2MSA2IDE1Ljk2MTEgNiAxNkM2IDE2LjAzODcgNi4wMDQ2OCAxNi4wNzM2IDYuMDExNDQgMTYuMTAxNEM4LjEyNTE5IDE3LjA3MjkgMTAuNjI2MiAxOC4zOTE5IDEyLjE0NzcgMTkuOTAxNkMxMy42Njk3IDIxLjQxMDcgMTQuOTk5NiAyMy44OTIgMTUuOTc5MSAyNS45ODlDMTYuMDA2OCAyNS45OTU2IDE2LjA0MTEgMjYgMTYuMDc5MyAyNkMxNi4xMTc1IDI2IDE2LjE1MTkgMjUuOTk1NCAxNi4xNzk2IDI1Ljk4OUMxNy4xNTkxIDIzLjg5MiAxOC40ODg4IDIxLjQxMSAyMC4wMDk5IDE5LjkwMjFNMjAuMDA5OSAxOS45MDIxQzIxLjUyNTMgMTguMzk4NyAyMy45NDY1IDE3LjA2NjkgMjUuOTkxNSAxNi4wODI0QzI1Ljk5NjUgMTYuMDU5MyAyNiAxNi4wMzEgMjYgMTUuOTk5N0MyNiAxNS45Njg0IDI1Ljk5NjUgMTUuOTQwMyAyNS45OTE1IDE1LjkxNzFDMjMuOTQ3NCAxNC45MzI3IDIxLjUyNTkgMTMuNjAxIDIwLjAxMDUgMTIuMDk4NyIvPgo8L21hc2s+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMjAuMDEwNSAxMi4wOTg3QzE4LjQ5IDEwLjU4OTQgMTcuMTU5NCA4LjEwODE0IDE2LjE3OTkgNi4wMTEwM0MxNi4xNTIgNi4wMDQ1MSAxNi4xMTc2IDYgMTYuMDc5NCA2QzE2LjA0MTEgNiAxNi4wMDY2IDYuMDA0NTEgMTUuOTc4OCA2LjAxMTA0QzE0Ljk5OTQgOC4xMDgxNCAxMy42Njk3IDEwLjU4ODkgMTIuMTQ4MSAxMi4wOTgxQzEwLjYyNjkgMTMuNjA3MSA4LjEyNTY4IDE0LjkyNjQgNi4wMTE1NyAxNS44OTgxQzYuMDA0NzQgMTUuOTI2MSA2IDE1Ljk2MTEgNiAxNkM2IDE2LjAzODcgNi4wMDQ2OCAxNi4wNzM2IDYuMDExNDQgMTYuMTAxNEM4LjEyNTE5IDE3LjA3MjkgMTAuNjI2MiAxOC4zOTE5IDEyLjE0NzcgMTkuOTAxNkMxMy42Njk3IDIxLjQxMDcgMTQuOTk5NiAyMy44OTIgMTUuOTc5MSAyNS45ODlDMTYuMDA2OCAyNS45OTU2IDE2LjA0MTEgMjYgMTYuMDc5MyAyNkMxNi4xMTc1IDI2IDE2LjE1MTkgMjUuOTk1NCAxNi4xNzk2IDI1Ljk4OUMxNy4xNTkxIDIzLjg5MiAxOC40ODg4IDIxLjQxMSAyMC4wMDk5IDE5LjkwMjFNMjAuMDA5OSAxOS45MDIxQzIxLjUyNTMgMTguMzk4NyAyMy45NDY1IDE3LjA2NjkgMjUuOTkxNSAxNi4wODI0QzI1Ljk5NjUgMTYuMDU5MyAyNiAxNi4wMzEgMjYgMTUuOTk5N0MyNiAxNS45Njg0IDI1Ljk5NjUgMTUuOTQwMyAyNS45OTE1IDE1LjkxNzFDMjMuOTQ3NCAxNC45MzI3IDIxLjUyNTkgMTMuNjAxIDIwLjAxMDUgMTIuMDk4NyIgZmlsbD0id2hpdGUiLz4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0yMC4wMTA1IDEyLjA5ODdDMTguNDkgMTAuNTg5NCAxNy4xNTk0IDguMTA4MTQgMTYuMTc5OSA2LjAxMTAzQzE2LjE1MiA2LjAwNDUxIDE2LjExNzYgNiAxNi4wNzk0IDZDMTYuMDQxMSA2IDE2LjAwNjYgNi4wMDQ1MSAxNS45Nzg4IDYuMDExMDRDMTQuOTk5NCA4LjEwODE0IDEzLjY2OTcgMTAuNTg4OSAxMi4xNDgxIDEyLjA5ODFDMTAuNjI2OSAxMy42MDcxIDguMTI1NjggMTQuOTI2NCA2LjAxMTU3IDE1Ljg5ODFDNi4wMDQ3NCAxNS45MjYxIDYgMTUuOTYxMSA2IDE2QzYgMTYuMDM4NyA2LjAwNDY4IDE2LjA3MzYgNi4wMTE0NCAxNi4xMDE0QzguMTI1MTkgMTcuMDcyOSAxMC42MjYyIDE4LjM5MTkgMTIuMTQ3NyAxOS45MDE2QzEzLjY2OTcgMjEuNDEwNyAxNC45OTk2IDIzLjg5MiAxNS45NzkxIDI1Ljk4OUMxNi4wMDY4IDI1Ljk5NTYgMTYuMDQxMSAyNiAxNi4wNzkzIDI2QzE2LjExNzUgMjYgMTYuMTUxOSAyNS45OTU0IDE2LjE3OTYgMjUuOTg5QzE3LjE1OTEgMjMuODkyIDE4LjQ4ODggMjEuNDExIDIwLjAwOTkgMTkuOTAyMU0yMC4wMDk5IDE5LjkwMjFDMjEuNTI1MyAxOC4zOTg3IDIzLjk0NjUgMTcuMDY2OSAyNS45OTE1IDE2LjA4MjRDMjUuOTk2NSAxNi4wNTkzIDI2IDE2LjAzMSAyNiAxNS45OTk3QzI2IDE1Ljk2ODQgMjUuOTk2NSAxNS45NDAzIDI1Ljk5MTUgMTUuOTE3MUMyMy45NDc0IDE0LjkzMjcgMjEuNTI1OSAxMy42MDEgMjAuMDEwNSAxMi4wOTg3IiBzdHJva2U9IiM0OTFEOEIiIHN0cm9rZS13aWR0aD0iNCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgbWFzaz0idXJsKCNwYXRoLTItb3V0c2lkZS0xXzE4NV82KSIvPgo8L3N2Zz4K">
@@ -134,10 +134,8 @@
             <zeebe:input source="gpt-4.1" target="provider.openai.model.model" />
             <zeebe:input source="=0" target="provider.openai.model.parameters.temperature" />
             <zeebe:input source="You are an AI retail specialist who assists customers with inquiries about products and helps them make informed purchasing decisions. You name yourself &#34;Agentic Sales Expert&#34;. &#10;Your goal is to identify the type of product the customer is interested in, provide tailored suggestions from the available inventory, and finally present an offer that includes the selected products. You have access to tools such as loading available products from inventory, sending out emails, involving human representatives if needed, and calculating payment amounts. You must ensure that the customer feels understood, supported, and satisfied with your assistance.&#10;&#10;Objectives:&#10;Understand Customer Needs:&#10;Engage the customer in a friendly and professional manner.&#10;Ask clarifying questions to determine the type of product they are looking for (e.g., functionality, budget, preferences, usage).&#10;Identify key attributes the customer values (e.g., price, quality, brand).&#10;&#10;Provide Product Suggestions:&#10;Use the available product inventory tool to find suitable options.&#10;Present recommendations with clear descriptions (e.g., product name, features, price).&#10;Offer comparisons if multiple options fit the customer&#39;s needs.&#10;&#10;Finalize an Offer:&#10;Help the customer select their preferred products.&#10;Calculate payment amounts, including any applicable discounts, taxes, or shipping fees.&#10;Confirm the offer details and provide a breakdown of the costs.&#10;&#10;Use Supporting Tools:&#10;Inspect the full list of available tools. Typical tools include, but are not limited to:&#10; - Load available product data and retrieve inventory information.&#10; - Send follow-up emails with product details, invoices, or additional information.&#10; - Escalate inquiries to a human representative if the customer has unique or complex needs.&#10; - Process payment calculations and assist in finalizing transactions.&#10;&#10;&#10;Mandatory Use of &#34;send-email-to-customer&#34;:&#10;You must use the tool &#34;send-email-to-customer&#34; in every communication with the customer, especially in the following cases:&#10;a. To request additional information from the customer if their needs cannot be fully understood via the current conversation.&#10;b. To provide a formal offer that includes product details, payment breakdown, and any next steps.&#10;c. To send invoices or other follow-up details once the offer is finalized.&#10;Justify the use of this tool in the &#60;reflection&#62; tags.&#10;Evaluate each tool&#39;s relevance and explain why you picked or not picked a specific tool. Include all available tools in &#60;reflection&#62; tags and explain why using a tool or not.&#10;&#10;Invoke at least one relevant tool:&#10;Call the same tool multiple times with different inputs if needed.&#10;If no sales-specific tool fits, you must:&#10;a. call a generic search/knowledge tool or&#10;b. escalate via &#34;ask-a-sales-expert.&#34;&#10;Only if the expert confirms that no tool can help may you answer from general knowledge.&#10;Any choice to skip a potentially helpful tool must be justified inside &#60;reflection&#62;.&#10;&#10;Communication mandate:&#10; - To gather information from or provide a sales offer to the customer, call &#34;send-email-to-customer.&#34;&#10; - To seek guidance from an expert, call &#34;ask-a-sales-expert.&#34;&#10;Never invent or call tools that are not in the supplied list.&#10;&#10;After exhausting every relevant tool—and expert escalation if required—if you still cannot help, reply exactly with:&#10;&#34;ERROR: Unable to resolve (explain).&#34;&#10;&#10;Tone and Style:&#10;Be empathetic, approachable approachable&#10;&#10;REGULATORY &#38; PRIVACY RULES:&#10; - Never disclose internal account notes or confidential data.  &#10; - Do not reveal PII unless authenticated and tool-permitted.  &#10; - If regulations require additional authentication, call &#34;ask_customer&#34; to obtain it." target="data.systemPrompt.prompt" />
-            <zeebe:input source="=currentEmail.plainTextBody" target="data.userPrompt.prompt" />
-            <zeebe:input source="agent-ad-hoc-subprocess" target="data.tools.containerElementId" />
-            <zeebe:input source="=toolCallResults" target="data.tools.toolCallResults" />
-            <zeebe:input source="=agent.context" target="data.context" />
+            <zeebe:input target="data.userPrompt.prompt" />
+            <zeebe:input target="data.context" />
             <zeebe:input source="=20" target="data.memory.maxMessages" />
             <zeebe:input source="=10" target="data.limits.maxModelCalls" />
             <zeebe:input source="=true" target="data.response.includeText" />
@@ -146,7 +144,6 @@
           <zeebe:taskHeaders>
             <zeebe:header key="elementTemplateVersion" value="1" />
             <zeebe:header key="elementTemplateId" value="io.camunda.connectors.agenticai.aiagent.v1" />
-            <zeebe:header key="resultVariable" value="agent" />
             <zeebe:header key="retryBackoff" value="PT0S" />
           </zeebe:taskHeaders>
         </bpmn:extensionElements>
@@ -155,14 +152,14 @@
       </bpmn:serviceTask>
       <bpmn:sequenceFlow id="Flow_04t6ebs" sourceRef="Gateway_1pkhqa9" targetRef="Activity_19m982f" />
       <bpmn:sequenceFlow id="Flow_0h239g7" sourceRef="Activity_0h81k4q" targetRef="Event_09qx84h" />
-      <bpmn:sequenceFlow id="Flow_0j3m5zu" sourceRef="Gateway_1cxlz9s" targetRef="agent-ad-hoc-subprocess">
+      <bpmn:sequenceFlow id="Flow_0j3m5zu" name="Yes" sourceRef="Gateway_1cxlz9s" targetRef="agent-ad-hoc-subprocess">
         <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=not(agent.toolCalls = null) and count(agent.toolCalls) &gt; 0</bpmn:conditionExpression>
       </bpmn:sequenceFlow>
       <bpmn:sequenceFlow id="Flow_0n6xzfd" sourceRef="agent-ad-hoc-subprocess" targetRef="Gateway_1pkhqa9" />
       <bpmn:sequenceFlow id="Flow_0w8cb94" sourceRef="Event_0haygdl" targetRef="Activity_1wcii2s" />
-      <bpmn:sequenceFlow id="Flow_17rc3t8" sourceRef="Gateway_1cxlz9s" targetRef="Activity_0h81k4q" />
+      <bpmn:sequenceFlow id="Flow_17rc3t8" name="No" sourceRef="Gateway_1cxlz9s" targetRef="Activity_0h81k4q" />
       <bpmn:sequenceFlow id="Flow_1bcw2sy" sourceRef="Activity_19m982f" targetRef="Gateway_1cxlz9s" />
-      <bpmn:exclusiveGateway id="Gateway_1cxlz9s" default="Flow_17rc3t8">
+      <bpmn:exclusiveGateway id="Gateway_1cxlz9s" name="Call tools?" default="Flow_17rc3t8">
         <bpmn:incoming>Flow_1bcw2sy</bpmn:incoming>
         <bpmn:outgoing>Flow_0j3m5zu</bpmn:outgoing>
         <bpmn:outgoing>Flow_17rc3t8</bpmn:outgoing>
@@ -209,7 +206,7 @@
       <bpmn:messageEventDefinition id="MessageEventDefinition_0uu03ht" messageRef="Message_0nez94k" />
     </bpmn:startEvent>
     <bpmn:sequenceFlow id="Flow_1v9xye9" sourceRef="StartEvent_1" targetRef="Activity_0gqmvmp" />
-    <bpmn:endEvent id="Event_0j61ypw">
+    <bpmn:endEvent id="Event_0j61ypw" name="Product inquiry resolved">
       <bpmn:incoming>Flow_1unxral</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_1unxral" sourceRef="Activity_0gqmvmp" targetRef="Event_0j61ypw" />
@@ -266,15 +263,24 @@
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="Event_09qx84h_di" bpmnElement="Event_09qx84h">
         <dc:Bounds x="582" y="-120" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="557" y="-77" width="86" height="14" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_0haygdl_di" bpmnElement="Event_0haygdl">
         <dc:Bounds x="-178" y="-120" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="-202" y="-77" width="85" height="14" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1xfz7cn_di" bpmnElement="Activity_19m982f">
         <dc:Bounds x="160" y="-142" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_1cxlz9s_di" bpmnElement="Gateway_1cxlz9s" isMarkerVisible="true">
         <dc:Bounds x="315" y="-127" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="314" y="-147" width="52" height="14" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_1pkhqa9_di" bpmnElement="Gateway_1pkhqa9" isMarkerVisible="true">
         <dc:Bounds x="55" y="-127" width="50" height="50" />
@@ -298,6 +304,9 @@
       <bpmndi:BPMNEdge id="Flow_0j3m5zu_di" bpmnElement="Flow_0j3m5zu">
         <di:waypoint x="340" y="-77" />
         <di:waypoint x="340" y="18" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="346" y="-32" width="18" height="14" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0n6xzfd_di" bpmnElement="Flow_0n6xzfd">
         <di:waypoint x="80" y="18" />
@@ -310,6 +319,9 @@
       <bpmndi:BPMNEdge id="Flow_17rc3t8_di" bpmnElement="Flow_17rc3t8">
         <di:waypoint x="365" y="-102" />
         <di:waypoint x="420" y="-102" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="385" y="-120" width="15" height="14" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1bcw2sy_di" bpmnElement="Flow_1bcw2sy">
         <di:waypoint x="260" y="-102" />
@@ -327,6 +339,9 @@
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_0j61ypw_di" bpmnElement="Event_0j61ypw">
         <dc:Bounds x="782" y="97" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="763" y="140" width="74" height="27" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1v9xye9_di" bpmnElement="Flow_1v9xye9">
         <di:waypoint x="-292" y="115" />
