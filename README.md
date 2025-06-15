@@ -53,7 +53,7 @@ The AI connector already has a system prompt defined. This can be seen as the "H
 ## Run the Agent
 1. Deploy the process into a 8.8.0-alpha5 cluster
 2. Send an email to the configured email address with something like 
-```Hi, I am interested in a new grill. What could you recommend?````
+```Hi, I am interested in a new grill. What can you offer?```
 3. Go to Operate via Console
 4. Find your started process instance (it might take a couple of seconds as 1. the email must be delivered and 2. the Email connector needs to pick it up)
 5. Observe the instance in Operate and see which tools the agent uses
