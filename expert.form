@@ -1,0 +1,32 @@
+{
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.7.0",
+  "exporter": {
+    "name": "Camunda Web Modeler",
+    "version": "b7cb967"
+  },
+  "schemaVersion": 18,
+  "id": "expert-0z80uqi",
+  "components": [
+    {
+      "text": "# Sales Agent says:\n{{content}}",
+      "type": "text",
+      "layout": {
+        "row": "Row_0uag957",
+        "columns": null
+      },
+      "id": "Field_1jqhxhu"
+    },
+    {
+      "label": "Your reply",
+      "type": "textarea",
+      "layout": {
+        "row": "Row_1kwpcgu",
+        "columns": null
+      },
+      "id": "Field_08hjwbw",
+      "key": "expertAnswer"
+    }
+  ],
+  "type": "default"
+}
