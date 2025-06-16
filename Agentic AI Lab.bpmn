@@ -30,7 +30,6 @@
             <zeebe:userTask />
             <zeebe:ioMapping>
               <zeebe:input source="=fromAi(toolCall.userContent)" target="content" />
-              <zeebe:output source="=expertAnswer" target="toolCallResult" />
             </zeebe:ioMapping>
             <zeebe:formDefinition formId="expert-0z80uqi" />
           </bpmn:extensionElements>
@@ -113,7 +112,6 @@
               <zeebe:input source="=false" target="ignoreNullValues" />
             </zeebe:ioMapping>
             <zeebe:taskHeaders>
-              <zeebe:header key="resultExpression" value="={&#10;  toolCallResult: response.body&#10;}" />
               <zeebe:header key="retryBackoff" value="PT0S" />
             </zeebe:taskHeaders>
           </bpmn:extensionElements>
