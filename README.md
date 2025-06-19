@@ -5,10 +5,11 @@ This project demonstrates the basic steps of creating an AI Agent with Camunda.
 ## Technical pre-requisites
 1. Cluster 8.8.0-alpha5
 2. GMail account to send emails (or any other email provider that you have access to to send emails)
-3. Connector secret: ```GOOGLE_MAIL_USERNAME```
-4. Connector secret: ```GOOGLE_MAIL_PASSWORD```
-5. OpenAI account with access to gpt-4.1 (gpt-4o never calls the email tool...)  
-6. Connector secret: ```OPENAI_API_KEY```
+3. To avoid picking up all unread emails in your inbox create a folder (==label) in your GMail account: ```camundaSalesAgent```
+4. Connector secret: ```GOOGLE_MAIL_USERNAME```
+5. Connector secret: ```GOOGLE_MAIL_PASSWORD```
+6. OpenAI account with access to gpt-4.1 (gpt-4o never calls the email tool...)  
+7. Connector secret: ```OPENAI_API_KEY```
 
 The Google Password is NOT your user password, you must create an application password:
 https://myaccount.google.com/u/1/apppasswords
