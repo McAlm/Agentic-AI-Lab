@@ -45,7 +45,7 @@
               <zeebe:property name="data.imapConfig.imapHost" value="imap.gmail.com" />
               <zeebe:property name="data.imapConfig.imapPort" value="993" />
               <zeebe:property name="data.imapConfig.imapCryptographicProtocol" value="TLS" />
-              <zeebe:property name="data.folderToListen" value="camundaSalesAgent" />
+              <zeebe:property name="data.folderToListen" value="camundasalesagent" />
               <zeebe:property name="data.pollingWaitTime" value="PT10S" />
               <zeebe:property name="data.pollingConfigDiscriminator" value="unseenPollingConfig" />
               <zeebe:property name="data.pollingConfig.handlingStrategy" value="READ" />
@@ -188,7 +188,7 @@
           <zeebe:property name="data.imapConfig.imapHost" value="imap.gmail.com" />
           <zeebe:property name="data.imapConfig.imapPort" value="993" />
           <zeebe:property name="data.imapConfig.imapCryptographicProtocol" value="TLS" />
-          <zeebe:property name="data.folderToListen" value="camundaSalesAgent" />
+          <zeebe:property name="data.folderToListen" value="camundasalesagent" />
           <zeebe:property name="data.pollingWaitTime" value="PT10S" />
           <zeebe:property name="data.pollingConfigDiscriminator" value="unseenPollingConfig" />
           <zeebe:property name="data.pollingConfig.handlingStrategy" value="READ" />
